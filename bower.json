@@ -1,0 +1,14 @@
+{
+  "name": "rssfe-es6",
+  "homepage": "https://github.com/mikeyhu/rssfe-es6",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5"
+  }
+}

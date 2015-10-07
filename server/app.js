@@ -6,6 +6,7 @@ var errorRoutes = require('./routes/error.js');
 
 var configuration = require('./configuration.js');
 
+var backend = require('./services/backend-api.js')(configuration.apiBaseUri);
 
 debug(configuration);
 
@@ -18,10 +19,18 @@ if(configuration.cacheTemplates) {
 }
 app.engine('html', require('hogan-express'));
 app.use(logger('dev'));
+app.use(express.static('client'));
 
 app.get('/', (req,res)=> {
   res.locals.name='world';
   res.render('index', {message: 'this is a message'});
+});
+
+app.get('/latest', (req, res) => {
+  backend.latest()
+    .then((response)=> {
+      res.render('latest' , {stories:response.data})
+    });
 });
 
 app.use(errorRoutes);
