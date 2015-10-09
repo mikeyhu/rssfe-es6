@@ -2,7 +2,11 @@
 {{#stories}}
 <div class="story">
   <h3><a href="{{ link }}">{{ title }}</a></h3>
-  <p>Published: {{datePublished}}</p>
+  <p>
+    <span>From: {{channelTitle}}</span>
+    <span class="story-date">Published: {{datePublished}}</span>
+  </p>
+
 
 </div>
 {{/stories}}
