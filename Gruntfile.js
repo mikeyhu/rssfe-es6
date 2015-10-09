@@ -5,6 +5,9 @@ module.exports = function (grunt) {
       dev: {
         script: 'server/app.js',
         options: {
+          env: {
+            HTTP_LOGGING:'dev'
+          },
           nodeArgs: ['--harmony'],
           ext: 'js',
           ignore: ['node_modules/**', 'app/assets/**'],
@@ -17,6 +20,9 @@ module.exports = function (grunt) {
       test: {
         files: ['**/*.js'],
         tasks: ['mochaTest']
+      },
+      css: {
+        files: []
       }
     },
 
@@ -47,15 +53,7 @@ module.exports = function (grunt) {
             src: ["**/*.scss"],
             dest: "client/assets/css",
             ext: ".css"
-          },
-          {
-            expand: true,
-            cwd: "client/bower_components/bootstrap-sass/assets/stylesheets",
-            src: ["**/*.scss"],
-            dest: "client/assets/css",
-            ext: ".css"
-          },
-
+          }
         ]
       }
     }

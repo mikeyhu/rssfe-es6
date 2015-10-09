@@ -18,7 +18,7 @@ if(configuration.cacheTemplates) {
   app.enable('view cache');
 }
 app.engine('html', require('hogan-express'));
-app.use(logger('dev'));
+app.use(logger(configuration.httpLogging));
 app.use(express.static('client'));
 
 app.get('/', (req,res)=> {

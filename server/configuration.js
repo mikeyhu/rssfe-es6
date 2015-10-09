@@ -9,7 +9,8 @@ module.exports = function () {
 
   return {
     apiBaseUri: getApiUri(),
-    cacheTemplates: false
+    cacheTemplates: false,
+    httpLogging: process.env.HTTP_LOGGING ? process.env.HTTP_LOGGING : 'combined'
   };
 
 }();
