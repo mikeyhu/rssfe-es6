@@ -26,11 +26,9 @@ app.get('/', (req,res)=> {
   res.render('index', {message: 'this is a message'});
 });
 
-app.get('/latest', (req, res) => {
+app.get('/api/latest', (req, res) => {
   backend.latest()
-    .then((response)=> {
-      res.render('latest' , {stories:response.data})
-    });
+    .then((response)=> res.json(response.data));
 });
 
 app.use(errorRoutes);

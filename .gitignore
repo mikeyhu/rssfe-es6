@@ -2,5 +2,7 @@
 node_modules/
 bower_components/
 client/assets/css/
+client/assets/js/
 kb8/
 release.sh
+deploy.sh

@@ -56,6 +56,17 @@ module.exports = function (grunt) {
           }
         ]
       }
+    },
+
+    copy: {
+      main: {
+        files: [{
+          expand: true,
+          cwd: 'bower_components/',
+          src: ['**/*.min.js'],
+          dest: 'client/assets/js'
+        }]
+      }
     }
 
   });
@@ -64,14 +75,15 @@ module.exports = function (grunt) {
     'grunt-nodemon',
     'grunt-concurrent',
     'grunt-mocha-test',
-    'grunt-sass'
+    'grunt-sass',
+    'grunt-contrib-copy'
   ].forEach(function (task) {
       grunt.loadNpmTasks(task);
     });
 
   grunt.registerTask('default', ['build', 'concurrent:target']);
 
-  grunt.registerTask('build', ['sass', 'mochaTest']);
+  grunt.registerTask('build', ['sass', 'mochaTest', 'copy']);
 
-  grunt.registerTask('test', ['build']);
+  grunt.registerTask('test', ['mochaTest']);
 };
