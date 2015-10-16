@@ -1,8 +1,13 @@
 var Story = React.createClass({
   render: function() {
+    var click = `/goto?url=${encodeURIComponent(this.props._id)}}`;
     return (
       <div className="story">
-        <h2>{this.props.title}</h2>
+        <h3><a href={click}>{this.props.title}</a></h3>
+        <p>
+          <span>From: {this.props.channelTitle}</span>
+          <span class="story-date">Published: {this.props.datePublished}</span>
+        </p>
       </div>
     );
   }
@@ -28,8 +33,7 @@ var StoryList = React.createClass({
   render: function() {
     var storyNodes = this.state.data.map(function (story) {
       return (
-        <Story title={story.title}>
-        </Story>
+        <Story {...story}></Story>
       );
     });
     return (
